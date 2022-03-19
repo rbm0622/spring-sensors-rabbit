@@ -19,7 +19,14 @@ public class SensorsUiController {
 
     @GetMapping
     public String fetchUI(Model model) {
-        model.addAttribute("sensors", sensorRepository.findAll());
+        var formattedSensorData = sensorRepository.findAll()
+            .stream().map(s -> new SensorData(
+                s.getId(),
+                Math.round(s.getTemperature() * 100) / 100.0d,
+                Math.round(s.getPressure() * 100) / 100.0d
+            )
+        ).collect(java.util.stream.Collectors.toList());
+        model.addAttribute("sensors", formattedSensorData);
         model.addAttribute("title", title);
         return "index";
     }
