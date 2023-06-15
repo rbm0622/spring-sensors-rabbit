@@ -9,7 +9,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/jaimegag/spring-sensors-rabbit
+      url: https://github.com/rbm0622/spring-sensors-rabbit
       ref:
         branch: main
   serviceClaims:
